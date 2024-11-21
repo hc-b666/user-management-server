@@ -13,6 +13,10 @@ app.use(cors({
   origin: "http://localhost5173",
 }));
 
+app.use("/", (req, res) => {
+  res.json({ message: "We got your request" });
+});
+
 app.use("/api/v1", router);
 
 app.use((req, res) => {
