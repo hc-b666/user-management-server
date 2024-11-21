@@ -10,7 +10,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use(cors({
-  origin: "http://localhost5173",
+  origin: "*", methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS"
 }));
 
 app.use("/", (req, res) => {
