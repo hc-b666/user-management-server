@@ -6,6 +6,7 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   lastSeen: { type: Date, required: true },
   isBlocked: { type: Boolean, required: true },
+  // deletedAt: { type: Date, required: false },
 });
 
 export const User = mongoose.model("User", userSchema);
