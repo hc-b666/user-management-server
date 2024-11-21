@@ -12,3 +12,4 @@ function createSecretToken(id) {
     });
 }
 ;
+//# sourceMappingURL=jwt.js.map

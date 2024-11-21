@@ -38,3 +38,4 @@ router.put("/dashboard/blockUsers", auth_middleware_1.authMiddleware, dashboardC
 router.put("/dashboard/unblockUsers", auth_middleware_1.authMiddleware, dashboardController.unblockUsers);
 router.delete("/dashboard/deleteUsers", auth_middleware_1.authMiddleware, dashboardController.deleteUsers);
 exports.default = router;
+//# sourceMappingURL=index.js.map

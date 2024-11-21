@@ -7,3 +7,4 @@ exports.default = (0, envalid_1.cleanEnv)(process.env, {
     PORT: (0, validators_1.port)(),
     TOKEN_KEY: (0, validators_1.str)(),
 });
+//# sourceMappingURL=validateEnv.js.map
