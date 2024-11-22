@@ -10,7 +10,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use(cors({
-  origin: "*", methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS"
+  origin: "*",
 }));
 
 app.get("/", (req, res) => {

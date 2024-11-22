@@ -10,5 +10,3 @@ dbConnection();
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
-
-// fuck you restart
