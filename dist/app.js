@@ -13,7 +13,7 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)({
     origin: "*", methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS"
 }));
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.json({ message: "We got your request" });
 });
 app.use("/api/v1", routes_1.default);
