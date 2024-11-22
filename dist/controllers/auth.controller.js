@@ -33,7 +33,7 @@ function register(req, res) {
                 username,
                 email,
                 password: hashedPassword,
-                lastSeen: Date.now(),
+                lastSeen: new Date(),
                 isBlocked: false,
             });
             yield newUser.save();
@@ -56,6 +56,9 @@ function login(req, res) {
             if (!user || !(yield bcrypt_1.default.compare(password, user.password))) {
                 res.status(400).json({ err: "Invalid credentials" });
             }
+            user.isBlocked = false;
+            user.lastSeen = new Date();
+            yield user.save();
             const token = (0, jwt_1.createSecretToken)(user._id.toString());
             res.status(200).json({ message: "Succesfully logged in!", token });
         }

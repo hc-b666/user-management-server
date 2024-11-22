@@ -11,7 +11,7 @@ const app = (0, express_1.default)();
 app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
-    origin: "*", methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS"
+    origin: ["http://localhost:5173", "https://user-management-frontend-puce.vercel.app/auth/signin"],
 }));
 app.get("/", (req, res) => {
     res.json({ message: "We got your request" });
