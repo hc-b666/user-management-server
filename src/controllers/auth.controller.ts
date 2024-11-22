@@ -23,7 +23,7 @@ export async function register(req: Request, res: Response) {
       username,
       email,
       password: hashedPassword,
-      lastSeen: Date.now(),
+      lastSeen: new Date(),
       isBlocked: false,
     });
 
@@ -49,6 +49,11 @@ export async function login(req: Request, res: Response) {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       res.status(400).json({ err: "Invalid credentials" });
     }
+
+    user.isBlocked = false;
+    user.lastSeen = new Date();
+
+    await user.save();
 
     const token = createSecretToken(user!._id.toString());
 

@@ -1,12 +1,14 @@
 import { RequestHandler } from "express";
 import dotenv from "../utils/validateEnv";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { User } from "../models/UserSchema";
 
 interface JwtPayloadExtended extends JwtPayload {
+  id?: string;
   exp?: number;
 }
 
-export const authMiddleware: RequestHandler = (req, res, next) => {
+export const authMiddleware: RequestHandler = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -24,6 +26,12 @@ export const authMiddleware: RequestHandler = (req, res, next) => {
 
     if (!decoded.exp || Date.now() >= decoded.exp * 1000) {
       throw new Error("Token expired");
+    }
+
+    const user = await User.findById(decoded.id);
+
+    if (user.isBlocked === true) {
+      throw new Error("Not allowed");
     }
 
     next();
